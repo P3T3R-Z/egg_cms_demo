@@ -1,5 +1,5 @@
 var url=require('url')
-var neqpath=['/admin/login','/admin/verify','/admin/dologin']
+var neqpath=['/admin/login','/admin/verify','/admin/doLogin']
 module.exports = (options, app) => {
   return async function auth(ctx, next) {
 

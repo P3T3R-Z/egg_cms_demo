@@ -22,7 +22,8 @@ module.exports = appInfo => {
   }
   config.view = {
     mapping: {
-      ".html": "ejs"
+      ".html": "ejs",
+      '.nj': 'nunjucks'
     }
   };
   config.session = {

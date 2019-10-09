@@ -1,24 +1,41 @@
-"use strict";
-const svgCaptcha = require("svg-captcha");
-const md5 =require('md5')
+'use strict';
 
-const Service = require("egg").Service;
+// https://www.npmjs.com/package/svg-captcha
+
+var svgCaptcha = require('svg-captcha'); //引入验证
+
+var md5 = require('md5');
+
+const Service = require('egg').Service;
 
 class ToolsService extends Service {
-  async verify() {
-    var captcha = svgCaptcha.create({
-      size: 6,
-      fontSize: 50,
-      width: 100,
-      height: 30,
-      background: "#ccc"
-    });
-    this.ctx.session.code = captcha.text; //验证码信息
+
+  //生成验证码
+  async captcha (){    
+    var captcha = svgCaptcha.create({ 
+        size:4,
+        fontSize: 50, 
+        width: 100, 
+        height:32,
+        background:"#cc9966" 
+      });
+
+    this.ctx.session.code = captcha.text;   /*验证码的信息*/
+
     return captcha;
   }
-  md5(str){
-    return md5(str)
+  async md5(str){
+
+    return md5(str);
   }
+  async getTime(){
+
+    var d=new Date();
+
+    return d.getTime();
+
+  }
+ 
 }
 
 module.exports = ToolsService;
