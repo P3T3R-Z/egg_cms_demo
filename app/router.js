@@ -21,7 +21,7 @@ module.exports = app => {
 //验证码
   router.get('/admin/verify', controller.admin.base.verify);
 
-  
+  router.get('/admin/delete',controller.admin.base.delete);
 
   router.get('/admin/manager', controller.admin.manager.index);
   router.get('/admin/manager/add', controller.admin.manager.add);

@@ -4,6 +4,9 @@ module.exports = (options, app) => {
   return async function auth(ctx, next) {
 
     ctx.state.csrf=ctx.csrf  //全局变量
+
+    ctx.state.prevPage=ctx.request.headers['referer']
+
     var pathname = url.parse(ctx.request.url).pathname;
     
     if(ctx.session.userinfo){

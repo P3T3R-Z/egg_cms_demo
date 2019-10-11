@@ -42,7 +42,20 @@ class BaseController extends Controller {
 
   //封装一个删除方法   
    
+ async delete(){
+   /*
+   1. 获取要删除的数据库表 model
+   2. 获取要删除数据的id
+   3. 执行删除
+   4. 返回以前的页面  ctx.request.headers'referer'] 上一页地址
+   */
 
+   var model=this.ctx.request.query.model;
+   var id=this.ctx.request.query.id;
+   
+    await this.ctx.model[model].deleteOne({"_id":id})
+    this.ctx.redirect(this.ctx.state.prevPage)  //此处为全局的上一页路径变量 (在中间件中设置))
+ }
 
 
 
