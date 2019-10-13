@@ -10,21 +10,29 @@
           
             <div class="panel panel-default">              
 			    <div class="panel-heading">
-                  增加商品
+                  修改管理
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive input-form">
-                        <form action="/doAdd" method="post">
+                        <form action="/doEdit" method="post">
                             <ul>
-                                <li>  商品名称: <input type="text" name="title"/></li>
+                                <li>  管理员名称: <input type="text" readonly name="username" value="<%=adminResult.username%>"/></li>
 
-                                <li>  商品图片: <input type="file" name="pic"/></li>
-                                <li>  商品价格: <input type="text" name="price"/></li>
-                                <li>  商品邮费: <input type="text" name="fee"/></li>
+                                <li>  密码: <input type="text" name="password"/></li>
+                                <li>  电话: <input type="text" name="mobile" value="<%=adminResult.mobile%>"/></li>
+                                <li>  邮箱: <input type="text" name="email" value="<%=adminResult.email%>"/></li>
 
                                 <li>
-                                    商品描述:
-                                    <textarea name="description" id="" cols="60" rows="8"></textarea>
+                                    角色:
+                                    <select name="role_id" id="role_id">
+                                            <%for(var i=0;i<role.length;i++){%>
+                                                <%if(role[i]._id.toString()==adminResult.role_id.toString()){%>
+                                                    <option value="<%=role[i]._id%>" selected><%=role[i].title%></option>
+                                                <%}else{%>
+                                                    <option value="<%=role[i]._id%>"><%=role[i].title%></option>
+                                                <%}%>
+                                            <%}%>
+                                    </select>
                                 </li>
 
                                 <li>
