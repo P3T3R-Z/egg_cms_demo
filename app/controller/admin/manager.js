@@ -67,11 +67,34 @@ class ManagerController extends BaseController {
     })
     var role=await this.ctx.model.Role.find()
     
-    await this.ctx.render('admin/manager/edit',{
-      adminResult,
-      role
+    await this.ctx.render('/admin/manager/edit',{
+      adminResult: adminResult,
+      role: role
     });
   } 
+
+  async doEdit(){
+    let {email,username,role_id,mobile,password, id}=this.ctx.request.body;
+
+    if(password){
+      password=await this.service.tools.md5(password);
+      await this.ctx.model.Admin.updateOne({"_id":id},{
+        password,
+        mobile,
+        email,
+        role_id
+      })
+    } else {
+      await this.ctx.model.Admin.updateOne({"_id":id},{
+        mobile,
+        email,
+        role_id
+      })
+    }
+    await this.success('/admin/manager/add',"更新成功")
+  }
+
+  
 }
 
 module.exports = ManagerController;

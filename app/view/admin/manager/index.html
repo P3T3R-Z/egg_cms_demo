@@ -47,11 +47,14 @@
                     <tr>
                         
                         <td><%=list[i].username%></td>
-                        <td><%=list[i].role[0].title%></td>
-                      
+                        <%if(list[i].role[0]){%>
+                            <td><%=list[i].role[0].title%></td>
+                        <%}else{%>
+                            <td></td>
+                        <%}%>
                         <td class="text-center">
                             <a href="/admin/manager/edit?id=<%=list[i]._id%>">修改</a>
-                            <a href="">删除</a>  
+                            <a href="/admin/manager/delete?model=Admin&id=<%=list[i]._id%>">删除</a>  
                         </td>
                     </tr>
                 <%}%>

@@ -21,12 +21,13 @@ module.exports = app => {
 //验证码
   router.get('/admin/verify', controller.admin.base.verify);
 
-  router.get('/admin/delete',controller.admin.base.delete);
 
   router.get('/admin/manager', controller.admin.manager.index);
   router.get('/admin/manager/add', controller.admin.manager.add);
   router.get('/admin/manager/edit', controller.admin.manager.edit);
   router.post('/admin/manager/doAdd', controller.admin.manager.doAdd);
+  router.post('/admin/manager/doEdit', controller.admin.manager.doEdit);
+  router.get('/admin/manager/delete', controller.admin.base.delete);
 
 
 
@@ -35,10 +36,7 @@ module.exports = app => {
   router.post('/admin/role/doAdd', controller.admin.role.doAdd);
   router.post('/admin/role/doEdit', controller.admin.role.doEdit);
   router.get('/admin/role/edit', controller.admin.role.edit);
-
-
-
-  // router.get('/admin/delete', controller.admin.base.delete);
+ router.get('/admin/delete', controller.admin.base.delete);
 
 
   router.get('/admin/access', controller.admin.access.index);

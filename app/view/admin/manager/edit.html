@@ -14,19 +14,21 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive input-form">
-                        <form action="/doEdit" method="post">
+                        <form action="/admin/manager/doEdit" method="post">
+                            <input type="hidden" name="_csrf" value="<%=csrf%>">
+                            <input type="hidden" name="id" value="<%=adminResult[0]._id%>">
                             <ul>
-                                <li>  管理员名称: <input type="text" readonly name="username" value="<%=adminResult.username%>"/></li>
+                                <li>  管理员名称: <input type="text" readonly name="username" value="<%=adminResult[0].username%>"/></li>
 
                                 <li>  密码: <input type="text" name="password"/></li>
-                                <li>  电话: <input type="text" name="mobile" value="<%=adminResult.mobile%>"/></li>
-                                <li>  邮箱: <input type="text" name="email" value="<%=adminResult.email%>"/></li>
+                                <li>  电话: <input type="text" name="mobile" value="<%=adminResult[0].mobile%>"/></li>
+                                <li>  邮箱: <input type="text" name="email" value="<%=adminResult[0].email%>"/></li>
 
                                 <li>
                                     角色:
                                     <select name="role_id" id="role_id">
-                                            <%for(var i=0;i<role.length;i++){%>
-                                                <%if(role[i]._id.toString()==adminResult.role_id.toString()){%>
+                                            <%for(var i=0;i<role.length; i++){%>
+                                                <%if(role[i]._id.toString()==adminResult[0].role_id.toString()){%>
                                                     <option value="<%=role[i]._id%>" selected><%=role[i].title%></option>
                                                 <%}else{%>
                                                     <option value="<%=role[i]._id%>"><%=role[i].title%></option>
